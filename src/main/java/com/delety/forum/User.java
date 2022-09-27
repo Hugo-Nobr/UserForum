@@ -1,6 +1,8 @@
 package com.delety.forum;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -14,8 +16,12 @@ public class User{
     private String email;
     private String pass;
 
+    @OneToMany(mappedBy = "client")
+    private List<Publication> posts = new ArrayList();
+
     public User(){
     }
+
 
     public User(long id, String name, String email, String pass) {
         this.id = id;
@@ -54,6 +60,10 @@ public class User{
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public List<Publication> getPosts() {
+        return posts;
     }
 
     @Override
