@@ -1,11 +1,14 @@
 package com.delety.forum;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+@Component
 @Entity
 @Table
 public class User{
@@ -16,6 +19,7 @@ public class User{
     private String email;
     private String pass;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Publication> posts = new ArrayList();
 
